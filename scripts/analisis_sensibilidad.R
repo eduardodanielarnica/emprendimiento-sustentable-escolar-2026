@@ -19,3 +19,5 @@ for(precio in precios) {
 
 print("=== RECOMENDACION ===")
 print("Precio sugerido: $350")
+
+
