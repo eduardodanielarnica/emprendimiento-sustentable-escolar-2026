@@ -1,4 +1,4 @@
-# 🌱 Emprendimiento-sustentable-escolar-2026
+# 🌱 Emprendimiento Sustentable Escolar 2026
 
 **Repositorio central de la materia Producción – Escuela ORT**  
 *Modalidad: Aprendizaje basado en proyectos + Gestión ágil + Análisis con R*
