@@ -1,14 +1,14 @@
 # 🌱 Emprendimiento Sustentable Escolar 2026
-
-**Repositorio central de la materia Producción – Escuela ORT**  
-*Modalidad: Aprendizaje basado en proyectos + Gestión ágil + Análisis con R*
+### Materia: Producción · Escuela ORT Argentina
+> **Docente:** Eduardo Daniel Arnica · Ciclo lectivo 2026
 
 ---
 
-## 🎯 Objetivo del proyecto
+## ¿Qué es este repositorio?
 
-Los estudiantes diseñarán, simularán y evaluarán un **emprendimiento escolar sustentable** (ej: huerta hidropónica, reciclaje de plásticos, productos de higiene ecológicos).  
-Cada equipo usará **R** para analizar costos, impacto ambiental y viabilidad, gestionando todo el ciclo de vida del proyecto mediante **GitHub Projects + Issues + Pull Requests**.
+Este es el **centro operativo de la materia**. Aquí gestionamos el avance de todos los proyectos de manera profesional y colaborativa, combinando herramientas de la industria tecnológica con análisis cuantitativo en R.
+
+Cada grupo diseñará, evaluará y defenderá un **emprendimiento sustentable real** usando datos, modelos financieros y pensamiento crítico.
 
 ---
 
