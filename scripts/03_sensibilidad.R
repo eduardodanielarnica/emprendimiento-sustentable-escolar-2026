@@ -85,14 +85,13 @@ colnames(matriz) <- paste0("Precio ", ifelse(p_range >= 0, "+", ""), p_range, "%
 
 print(matriz)
 
-# Identificar zona de pérdida
 cat("\n⚠️  Celdas negativas = pérdida en ese escenario\n")
 
-# -- Gráfico de tornado ------ -------------------------------
+# -- Gráfico de tornado corregido ----------------------------
 
 sensibilidades <- data.frame(
   variable = c("Precio de venta", "Volumen de ventas",
-                "Costo variable", "Costo fijo"),
+               "Costo variable", "Costo fijo"),
   impacto_positivo = c(
     ventas_base * (precio_base * 1.10 - costo_var_base) - costo_fijo_base,
     ventas_base * 1.10 * (precio_base - costo_var_base) - costo_fijo_base,
@@ -107,23 +106,34 @@ sensibilidades <- data.frame(
   )
 )
 
+# Ordenar de mayor a menor impacto
 sensibilidades <- sensibilidades[
   order(sensibilidades$impacto_positivo - sensibilidades$impacto_negativo,
-        decreasing = TRUE), ]
+        decreasing = FALSE), ]   # FALSE para que el mayor quede arriba en horiz
 
-# Diagrama de tornado
+# Calcular rango de cada variable
+rango <- sensibilidades$impacto_positivo - sensibilidades$impacto_negativo
+
+# Margen izquierdo ampliado para que entren las etiquetas completas
+par(mar = c(5, 12, 4, 2))
+
 barplot(
-  rbind(sensibilidades$impacto_positivo - ganancia_base,
-        sensibilidades$impacto_negativo - ganancia_base),
-  beside    = FALSE,
+  rango,
   horiz     = TRUE,
   names.arg = sensibilidades$variable,
-  col       = c("#4CAF50", "#F44336"),
+  col       = "#4CAF50",
+  border    = "white",
   main      = "Diagrama de tornado — ±10% en cada variable",
-  xlab      = "Variación en ganancia ($)",
-  las       = 1
+  xlab      = "Rango de variación en ganancia ($)",
+  las       = 1,
+  xlim      = c(0, max(rango) * 1.15)
 )
-abline(v = 0, col = "black")
+
+# Línea de referencia y etiquetas de valor
+abline(v = 0, col = "gray40", lwd = 1.5)
+text(rango, 1:nrow(sensibilidades) * 1.2 - 0.5,
+     labels = paste0("$", round(rango)),
+     pos = 4, cex = 0.85, col = "#1a5e1a")
 
 cat("\n✅ Análisis de sensibilidad completado.\n")
 cat("   Usá estos resultados para fundamentar tus decisiones\n")
